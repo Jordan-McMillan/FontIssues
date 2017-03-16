@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8" />
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+<script src="jquery-1.6.4.min.js"></script>
+
+	<script>
+	setTimeout(function() {
+				if (window.evoPdfConverter) {
+                    window.evoPdfConverter.startConversion();
+                }
+	}, 15000)
+	</script>
+	
+	
+</head>
+<body>
+
+<span id="measureSpan" style="display:none"></span>
+
+<div id="outputDiv"></div>
+
+<script>
+
+	var span = $('#measureSpan');
+	var div = $('#outputDiv');
+	var text = 'abcdef ghijklm nopqr stuvw xyz0123 456789A BCDEFGHI JKLMNOPQ RSTUVW XYZ';
+	
+	span.html(text);
+
+
+	var results = '<table><tr><th>font</th><th>width</th><th>height</th><th>text</th></tr>';
+
+	for (var i = 5; i < 11; i++) {
+		for (var j = 0; j < 10; j++) {
+			var fontSize = i + '.' + j;
+			var font = fontSize + 'pt Tahoma';
+			span.css('font', font);
+			var w = span.width();
+			var h = span.height();
+			
+			results += '<tr><td>' + fontSize + '</td><td>' + w + '</td><td>' + h + '</td><td style="font:' + font + '">' + text + '</td></tr>';
+		}
+	}
+
+	results += '</table>';
+	
+	div.html(results);
+</script>
+
+</body>
+</html>
